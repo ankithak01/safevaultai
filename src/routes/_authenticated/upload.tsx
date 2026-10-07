@@ -32,7 +32,7 @@ function UploadPage() {
 
   function pick(f?: File | null) {
     if (!f) return;
-    if (f.size > 10 * 1024 * 1024) return toast.error("Max file size is 10MB");
+    if (f.size > 10 * 1024 * 1024) { toast.error("Max file size is 10MB"); return; }
     setFile(f);
   }
 

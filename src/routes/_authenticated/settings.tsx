@@ -30,14 +30,14 @@ function Settings() {
   async function saveProfile(patch: Record<string, unknown>) {
     if (!data) return;
     const { error } = await supabase.from("profiles").update({ ...patch, updated_at: new Date().toISOString() }).eq("id", data.user.id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Saved");
     qc.invalidateQueries({ queryKey: ["me"] });
   }
 
   async function changePw() {
     const { error } = await supabase.auth.updateUser({ password: pw, current_password: cur } as never);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Password changed");
     setPw(""); setCur("");
   }

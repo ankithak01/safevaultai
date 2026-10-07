@@ -32,7 +32,7 @@ function Documents() {
   async function remove(d: Doc) {
     await supabase.storage.from("documents").remove([d.storage_path]);
     const { error } = await supabase.from("documents").delete().eq("id", d.id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     await logActivity("Document deleted", d.name);
     toast.success("Document deleted");
     qc.invalidateQueries({ queryKey: ["documents"] });

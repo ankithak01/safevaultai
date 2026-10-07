@@ -19,7 +19,7 @@ export function initials(name?: string | null) {
   return (name ?? "U").split(" ").map((s) => s[0]).join("").slice(0, 2).toUpperCase();
 }
 
-export function Avatar({ name, url, size = 32 }: { name?: string | null; url?: string | null; size?: number }) {
+export function Avatar({ name, url, size = 32 }: { name?: string | null | undefined; url?: string | null | undefined; size?: number }) {
   return url ? (
     <img src={url} alt="" className="rounded-full object-cover" style={{ width: size, height: size }} />
   ) : (
