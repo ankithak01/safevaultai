@@ -103,3 +103,23 @@
     font-family: var(--font-sans);
   }
 }
+
+@utility input {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-input);
+  background: var(--color-card);
+  padding: 0.6rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 0 2px var(--color-ring);
+  }
+}
+
+@utility card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  box-shadow: 0 1px 2px oklch(0.2 0.04 260 / 4%);
+}
