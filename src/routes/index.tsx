@@ -1,24 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { LoginPage } from "@/components/LoginPage";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "SafeVault — Your Documents. Your Control." },
+      { name: "description", content: "Securely store, search and manage your important documents with an AI assistant and expiry reminders." },
+      { property: "og:title", content: "SafeVault — Your Documents. Your Control." },
+      { property: "og:description", content: "Securely store, search and manage your important documents with an AI assistant and expiry reminders." },
+    ],
+  }),
+  component: LoginPage,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
