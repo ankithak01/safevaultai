@@ -38,6 +38,68 @@ export type Database = {
         }
         Relationships: []
       }
+      chat_messages: {
+        Row: {
+          created_at: string
+          encrypted_payload: string
+          id: string
+          payload_nonce: string
+          role: string
+          session_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          encrypted_payload: string
+          id?: string
+          payload_nonce: string
+          role: string
+          session_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          encrypted_payload?: string
+          id?: string
+          payload_nonce?: string
+          role?: string
+          session_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "chat_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chat_sessions: {
+        Row: {
+          created_at: string
+          id: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       documents: {
         Row: {
           category: string
@@ -89,6 +151,69 @@ export type Database = {
         }
         Relationships: []
       }
+      notes: {
+        Row: {
+          ai_indexing_enabled: boolean
+          created_at: string
+          encrypted_payload: string
+          favorite: boolean
+          id: string
+          payload_nonce: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          ai_indexing_enabled?: boolean
+          created_at?: string
+          encrypted_payload: string
+          favorite?: boolean
+          id?: string
+          payload_nonce: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          ai_indexing_enabled?: boolean
+          created_at?: string
+          encrypted_payload?: string
+          favorite?: boolean
+          id?: string
+          payload_nonce?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      password_entries: {
+        Row: {
+          created_at: string
+          encrypted_payload: string
+          favorite: boolean
+          id: string
+          payload_nonce: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          encrypted_payload: string
+          favorite?: boolean
+          id?: string
+          payload_nonce: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          encrypted_payload?: string
+          favorite?: boolean
+          id?: string
+          payload_nonce?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -99,6 +224,8 @@ export type Database = {
           id: string
           reminder_days: number
           updated_at: string
+          vault_encryption_salt: string | null
+          vault_verifier: string | null
         }
         Insert: {
           avatar_url?: string | null
@@ -109,6 +236,8 @@ export type Database = {
           id: string
           reminder_days?: number
           updated_at?: string
+          vault_encryption_salt?: string | null
+          vault_verifier?: string | null
         }
         Update: {
           avatar_url?: string | null
@@ -119,6 +248,62 @@ export type Database = {
           id?: string
           reminder_days?: number
           updated_at?: string
+          vault_encryption_salt?: string | null
+          vault_verifier?: string | null
+        }
+        Relationships: []
+      }
+      voice_notes: {
+        Row: {
+          ai_indexing_enabled: boolean
+          audio_nonce: string
+          created_at: string
+          duration_seconds: number | null
+          encrypted_title: string
+          id: string
+          mime_type: string
+          size_bytes: number
+          storage_path: string
+          title_nonce: string
+          transcript_ciphertext: string | null
+          transcript_nonce: string | null
+          transcription_status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          ai_indexing_enabled?: boolean
+          audio_nonce: string
+          created_at?: string
+          duration_seconds?: number | null
+          encrypted_title: string
+          id?: string
+          mime_type: string
+          size_bytes?: number
+          storage_path: string
+          title_nonce: string
+          transcript_ciphertext?: string | null
+          transcript_nonce?: string | null
+          transcription_status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          ai_indexing_enabled?: boolean
+          audio_nonce?: string
+          created_at?: string
+          duration_seconds?: number | null
+          encrypted_title?: string
+          id?: string
+          mime_type?: string
+          size_bytes?: number
+          storage_path?: string
+          title_nonce?: string
+          transcript_ciphertext?: string | null
+          transcript_nonce?: string | null
+          transcription_status?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
