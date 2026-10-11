@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791384990498,
+      "tag": "0000_safevault_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791550184558,
+      "tag": "0001_safevault_private_vault",
+      "breakpoints": true
+    }
+  ]
+}
